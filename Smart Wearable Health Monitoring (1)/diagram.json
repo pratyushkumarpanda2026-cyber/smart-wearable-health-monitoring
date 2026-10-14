@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "author": "Pratyush Kumar Panda 26BEL1117",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 153.6, "left": 120.04, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 399.8,
+      "left": 67.2,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 309.9, "left": -194.6, "attrs": {} },
+    { "type": "wokwi-ds18b20", "id": "temp1", "top": 85.27, "left": -101.52, "attrs": {} },
+    { "type": "wokwi-mpu6050", "id": "imu1", "top": 291.82, "left": 261.52, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 12,
+      "left": 193.8,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 322.8,
+      "left": 387.8,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 215.15,
+      "left": 374.4,
+      "attrs": { "value": "1000" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 373.1, "left": 268.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.2", "btn1:2.r", "black", [ "v0" ] ],
+    [ "gas1:VCC", "esp:5V", "red", [ "h0" ] ],
+    [ "esp:3V3", "temp1:VCC", "red", [ "h0" ] ],
+    [ "esp:4", "temp1:DQ", "green", [ "h0" ] ],
+    [ "esp:GND.3", "gas1:GND", "black", [ "h0" ] ],
+    [ "esp:GND.2", "temp1:GND", "black", [ "v0" ] ],
+    [ "esp:22", "imu1:SCL", "green", [ "h0" ] ],
+    [ "imu1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "imu1:SDA", "esp:21", "green", [ "v0" ] ],
+    [ "imu1:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "bz1:2", "esp:15", "green", [ "v0" ] ],
+    [ "bz1:1", "esp:GND.1", "green", [ "v0" ] ],
+    [ "esp:2", "led1:A", "green", [ "h0" ] ],
+    [ "esp:GND.2", "r1:1", "black", [ "v0" ] ],
+    [ "r1:2", "led1:C", "green", [ "v0" ] ],
+    [ "esp:15", "btn1:1.r", "green", [ "v0" ] ],
+    [ "esp:GND.2", "btn1:2.l", "black", [ "v0" ] ],
+    [ "gas1:AOUT", "esp:34", "green", [ "h0" ] ],
+    [ "esp:3V3", "pot1:VCC", "red", [ "h0" ] ],
+    [ "pot1:GND", "esp:GND.3", "black", [ "v0" ] ],
+    [ "esp:32", "pot1:SIG", "green", [ "h0" ] ],
+    [ "esp:15", "btn1:1.l", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
